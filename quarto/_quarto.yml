@@ -1,18 +1,18 @@
 project:
   type: website
+  extensions:
+    - shafayetShafee/downloadthis
 
 format:
   html:
+    theme: default
     css: custom.scss
     toc: true
     toc-expand: 1
     toc-depth: 4
     link-external-icon: false
     link-external-newwindow: true
-    #link-external-filter: '^mailto:karh@ign.ku.dk|(?:http:|https:)\/\/(?:www\.)*(qepanna\.quarto\.pub|ign\.ku\.dk|novonordiskfonden\.dk|doi\.org|twitter\.com)\/.*$'
     link-external-filter: '^(?:http:|https:)\/\/(?:www\.)*(qepanna\.quarto\.pub)\/.*$'
-    theme:
-      - custom.scss
     bibliography: ../paper/references.bib
     csl: apa-no-initials.csl
 
