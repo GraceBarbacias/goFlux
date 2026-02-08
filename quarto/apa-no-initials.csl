@@ -136,7 +136,7 @@
   <et-al-min>6</et-al-min>
   <et-al-use-first>1</et-al-use-first>
   <collapse>year-suffix</collapse>
-  <cite-group-delimiter="; ">;</cite-group-delimiter>
+  <cite-group-delimiter>;</cite-group-delimiter>
   <citation>
     <layout prefix="(" suffix=")" delimiter="; ">
       <group delimiter=" ">
