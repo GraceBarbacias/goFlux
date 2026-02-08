@@ -24,4 +24,4 @@ This simple workflow is contained in one script and goes through all steps, from
 
 All steps of the workflow are divided into one script per step. This is especially useful when adaptations are required after each step. Short scripts are better than one long messy script.
 
-{{< downloadthis path="scripts/divided workflow.zip" label="Divided workflow" >}}
+{{< downloadthis file="scripts/divided workflow.zip" label="Divided workflow" >}}
