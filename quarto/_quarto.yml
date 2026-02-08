@@ -1,7 +1,7 @@
 project:
   type: website
-  extensions:
-    - shafayetShafee/downloadthis
+extensions:
+  - shafayetShafee/downloadthis
 
 format:
   html:
