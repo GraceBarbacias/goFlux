@@ -5,7 +5,6 @@ format:
   html:
     toc: false
 author: Karelle Rheault
-bibliography: references.bib
 csl: apa-numeric-superscript-brackets.csl
 ---
 
