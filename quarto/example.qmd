@@ -18,10 +18,10 @@ To help you create an auxiliary file (used for the [manual identification of mea
 
 This simple workflow is contained in one script and goes through all steps, from import to producing plots with `flux2pdf`. It works best with few raw files and measurements.
 
-{{< downloadthis file="scripts/simple workflow.zip" label="Simple workflow" >}}
+{{< downloadthis file="scripts/simple_workflow.zip" label="Simple workflow" >}}
 
 #### Divided workflow {#sec-divided}
 
 All steps of the workflow are divided into one script per step. This is especially useful when adaptations are required after each step. Short scripts are better than one long messy script.
 
-{{< downloadthis file="scripts/divided workflow.zip" label="Divided workflow" >}}
+{{< downloadthis file="scripts/divided_workflow.zip" label="Divided workflow" >}}
