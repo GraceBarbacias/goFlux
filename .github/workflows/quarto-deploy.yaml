@@ -42,6 +42,17 @@ jobs:
           extra-packages: |
             any::knitr
             any::rmarkdown
+            any::devtools
+            any::dplyr
+            any::purrr
+            any::readxl
+            any::openxlsx
+            any::usethis
+            any::credentials
+            any::tidyr
+            any::tibble
+            any::ggplot2
+            any::stringr
             local::.
           needs: website
 
