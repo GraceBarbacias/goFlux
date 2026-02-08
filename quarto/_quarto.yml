@@ -1,5 +1,9 @@
 project:
   type: website
+output-dir: docs
+resources:
+    - "docs/**"      # Copy all files in docs folder
+    - "scripts/**"  # Copy all files in scripts folder
 extensions:
   - shafayetShafee/downloadthis
 
