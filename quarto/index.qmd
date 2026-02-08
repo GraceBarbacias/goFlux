@@ -76,7 +76,7 @@ Episode highlights:
 This software development was supported by the SilvaNova project funded by the NOVO Nordisk Foundation (grant no. NNF20OC0059948).
 
 ::: {layout="[[45,-10,45]]"}
-[![](images/Silva%20Nova%20logo.jpg){width="200" fig-align="right" height="120"}](https://ign.ku.dk/english/silvanova/)
+[![](images/Silva_Nova_logo.jpg){width="200" fig-align="right" height="120"}](https://ign.ku.dk/english/silvanova/)
 
-[![](images/Novo%20Nordisk%20fonden%20logo.png){fig-align="left" width="128"}](https://novonordiskfonden.dk/en/)
+[![](images/Novo_Nordisk_fonden_logo.png){fig-align="left" width="128"}](https://novonordiskfonden.dk/en/)
 :::
