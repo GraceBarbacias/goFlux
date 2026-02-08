@@ -61,5 +61,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: quarto/_site
-          clean: false
+          clean: true
           single-commit: false
