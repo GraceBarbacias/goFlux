@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>American Psychological Association 7th edition (no initials)</title>
+    <title-short>APA 7th (no initials)</title-short>
+    <id>http://www.zotero.org/styles/apa-no-initials</id>
+    <link href="http://www.zotero.org/styles/apa-no-initials" rel="self"/>
+    <link href="http://www.zotero.org/styles/apa" rel="based-on"/>
+    <link href="http://www.apa.org/" rel="documentation"/>
+    <author>
+      <name>Zotero</name>
+    </author>
+    <contributor>
+      <name>Brenton M. Wiernik</name>
+      <email>zotero@wiernik.org</email>
+    </contributor>
+    <contributor>
+      <name>Dominique Steinbach</name>
+    </contributor>
+    <issued>
+      <date-parts>
+        <date-part name="year" value="2024"/>
+        <date-part name="month" value="04"/>
+        <date-part name="day" value="23"/>
+      </date-parts>
+    </issued>
+    <updated>2024-04-23T23:49:52+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en-US">
+    <terms>
+      <term name="month-01" form="short">Jan.</term>
+      <term name="month-02" form="short">Feb.</term>
+      <term name="month-03" form="short">Mar.</term>
+      <term name="month-04" form="short">Apr.</term>
+      <term name="month-05" form="short">May</term>
+      <term name="month-06" form="short">Jun.</term>
+      <term name="month-07" form="short">Jul.</term>
+      <term name="month-08" form="short">Aug.</term>
+      <term name="month-09" form="short">Sep.</term>
+      <term name="month-10" form="short">Oct.</term>
+      <term name="month-11" form="short">Nov.</term>
+      <term name="month-12" form="short">Dec.</term>
+      <term name="and">and</term>
+      <term name="and" form="symbol">&amp;</term>
+    </terms>
+  </locale>
+  <macro name="contributors-short">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="container-contributors">
+    <names variable="editor translator" delimiter=", " prefix=", ">
+      <label form="short" suffix=" "/>
+      <name and="text" delimiter=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name and="text" name-as-sort-order="first" sort-separator=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text variable="title" form="short" font-style="italic"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage post post-weblog" match="any">
+        <text variable="URL" prefix="Retrieved from " suffix="."/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book" match="any">
+        <text variable="title" font-style="italic"/>
+      </if>
+      <else-if variable="DOI">
+        <text variable="title"/>
+        <text variable="DOI" prefix=" https://doi.org/"/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title-short">
+    <choose>
+      <if type="book" match="any">
+        <text variable="title" font-style="italic" form="short"/>
+      </if>
+      <else>
+        <text variable="title" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher"/>
+  </macro>
+  <macro name="event">
+    <text variable="event"/>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <citation-format>author-date</citation-format>
+  <sort-order>author-date</sort-order>
+  <delimiter-precedes-et-al>never</delimiter-precedes-et-al>
+  <et-al-min>6</et-al-min>
+  <et-al-use-first>1</et-al-use-first>
+  <collapse>year-suffix</collapse>
+  <cite-group-delimiter="; ">;</cite-group-delimiter>
+  <citation>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography line-spacing="2" entry-spacing="0" hanging-indent="true">
+    <layout>
+      <group delimiter=" ">
+        <text macro="author"/>
+        <text macro="issued" prefix="(" suffix=")."/>
+        <text macro="title" suffix="."/>
+        <text variable="container-title" font-style="italic"/>
+        <text variable="volume" font-weight="bold"/>
+        <text variable="issue" prefix="(" suffix="),"/>
+        <text variable="page" suffix="."/>
+        <text macro="access"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

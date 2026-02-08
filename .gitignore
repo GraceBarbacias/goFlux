@@ -5,3 +5,17 @@ docs
 .RDataTmp
 .Ruserdata
 README.Rmd
+
+# Quarto outputs
+quarto/_site/
+quarto/_freeze/
+quarto/.quarto/
+quarto/*.html
+quarto/~*.qmd
+
+# R/Quarto caches
+.cache/
+*.Rmd.lock
+
+# Rendered outputs
+_site/
