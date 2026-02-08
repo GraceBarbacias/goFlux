@@ -12,13 +12,13 @@ Both workflows are using the ultra-portable GHG analyzer from Los Gatos Research
 
 #### Create an auxiliary file
 
-To help you create an auxiliary file (used for the [manual identification of measurements](manualID.qmd#sec-manID)), you can {{< downloadthis docs/example_auxfile.xlsx label="download" dname=example_auxfile id=auxfile-btn >}} this example Excel spreadsheet.
+To help you create an auxiliary file (used for the [manual identification of measurements](manualID.qmd#sec-manID)), you can {{< downloadthis file="docs/example_auxfile.xlsx" label="download" dname=example_auxfile id=auxfile-btn >}} this example Excel spreadsheet.
 
 #### Simple workflow {#sec-simple}
 
 This simple workflow is contained in one script and goes through all steps, from import to producing plots with `flux2pdf`. It works best with few raw files and measurements.
 
-{{< downloadthis path="scripts/simple workflow.zip" label="Simple workflow" >}}
+{{< downloadthis file="scripts/simple workflow.zip" label="Simple workflow" >}}
 
 #### Divided workflow {#sec-divided}
 
