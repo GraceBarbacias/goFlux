@@ -1,9 +1,8 @@
 project:
   type: website
-output-dir: docs
-resources:
-    - "docs/**"      # Copy all files in docs folder
-    - "scripts/**"  # Copy all files in scripts folder
+  resources:
+    - docs/example_auxfile.xlsx
+    - scripts/**  # Only include actual downloadable assets, not the output dir
 extensions:
   - shafayetShafee/downloadthis
 
