@@ -1,8 +1,5 @@
 ---
 title: "Complete downloadable examples"
-format: 
-  html: 
-    css: styles.css
 engine: knitr
 editor: visual
 ---
@@ -20,12 +17,6 @@ To help you create an auxiliary file (used for the [manual identification of mea
 #### Simple workflow {#sec-simple}
 
 This simple workflow is contained in one script and goes through all steps, from import to producing plots with `flux2pdf`. It works best with few raw files and measurements.
-
-```{r}
-#| echo: false
-#| output: false
-library(downloadthis)
-```
 
 ```{r}
 #| echo: false
