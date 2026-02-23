@@ -433,7 +433,7 @@ Note
 <section id="sec-step1" class="level2">
 <h2 class="anchored" data-anchor-id="sec-step1"><strong>1. Create an auxiliary file</strong></h2>
 <p>The auxiliary file (<code>auxfile</code>) requires two elements: a <code>UniqueID</code> and a <code>start.time</code> for each measurement. The <code>UniqueID</code> must be <strong>unique</strong>. For example, one could combine the name of a site (733a), a plot number (C) and a subplot (C), which would give the <code>UniqueID</code> “733a_C_C”. If repeated measurements are done on the same experimental unit, then a date (e.g.&nbsp;2022-09-28) could be added to the <code>UniqueID</code> (e.g.&nbsp;“733a_C_C_220928”) to make it truly unique and easy to understand. The <code>start.time</code> must be in the format “%Y-%m-%d %H:%M:%S” (e.g.&nbsp;2022-09-28 12:17:00) to be converted to POSIXct.</p>
-<p>You can <a href="docs/example_auxfile.xlsx">Download</a> an example Excel spreadsheet that you can use to create your auxiliary file.</p>
+<p>You can <a href="quarto/docs/example_auxfile.xlsx">download</a> an example Excel spreadsheet that you can use to create your auxiliary file.</p>
 <section id="load-the-auxfile" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-auxfile">Load the auxfile</h3>
 <p>Creating an auxiliary file with date and time can be a pain, especially while using Excel. It is recommended to save your file as .txt before import into R, to make sure that the date and time formats are appropriate (“%Y-%m-%d %H:%M:%S”, e.g.&nbsp;2022-09-28 12:17:00).</p>
