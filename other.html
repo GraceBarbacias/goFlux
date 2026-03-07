@@ -217,29 +217,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Examples</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">API Reference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./_generated/function_index.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">All Functions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./_generated/instruments_matrix.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Instruments</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./troubleshoot.html" class="sidebar-item-text sidebar-link">
@@ -262,6 +239,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul></li>
+  <li><a href="#additional-utility-functions" id="toc-additional-utility-functions" class="nav-link" data-scroll-target="#additional-utility-functions">Additional Utility Functions</a>
+  <ul>
+  <li><a href="#crop.meas-for-cropping-measurements" id="toc-crop.meas-for-cropping-measurements" class="nav-link" data-scroll-target="#crop.meas-for-cropping-measurements"><code>crop.meas</code> for cropping measurements</a>
+  <ul class="collapse">
+  <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1">Usage</a></li>
+  <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul></li>
+  <li><a href="#auto.deadband-for-automatic-deadband-calculation" id="toc-auto.deadband-for-automatic-deadband-calculation" class="nav-link" data-scroll-target="#auto.deadband-for-automatic-deadband-calculation"><code>auto.deadband</code> for automatic deadband calculation</a>
+  <ul class="collapse">
+  <li><a href="#usage-2" id="toc-usage-2" class="nav-link" data-scroll-target="#usage-2">Usage</a></li>
+  <li><a href="#arguments-2" id="toc-arguments-2" class="nav-link" data-scroll-target="#arguments-2">Arguments</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sec-validate-other" id="toc-sec-validate-other" class="nav-link" data-scroll-target="#sec-validate-other">Function Documentation Validation</a></li>
   </ul>
 </nav>
     </div>
@@ -351,9 +344,128 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.G2201i)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my.iso.comp <span class="ot">&lt;-</span> <span class="fu">iso.comp</span>(manID.G2201i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-
-
 </section>
+</section>
+<section id="additional-utility-functions" class="level2">
+<h2 class="anchored" data-anchor-id="additional-utility-functions">Additional Utility Functions</h2>
+<section id="crop.meas-for-cropping-measurements" class="level3">
+<h3 class="anchored" data-anchor-id="crop.meas-for-cropping-measurements"><code>crop.meas</code> for cropping measurements</h3>
+<p>Crops data by selecting a time window within each UniqueID</p>
+<section id="usage-1" class="level4">
+<h4 class="anchored" data-anchor-id="usage-1">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crop.meas</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  start.cut,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  end.cut,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">UniqueID =</span> <span class="st">"UniqueID"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments-1" class="level4">
+<h4 class="anchored" data-anchor-id="arguments-1">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>dataframe</code></td>
+<td>a data.frame containing gas measurements and a UniqueID per measurement.</td>
+</tr>
+<tr class="even">
+<td><code>start.cut</code></td>
+<td>numerical value; time (in seconds) to start cropping measurements.</td>
+</tr>
+<tr class="odd">
+<td><code>end.cut</code></td>
+<td>numerical value; time (in seconds) to end cropping measurements.</td>
+</tr>
+<tr class="even">
+<td><code>UniqueID</code></td>
+<td>character string; name of the column containing measurement IDs.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cropped_data <span class="ot">&lt;-</span> <span class="fu">crop.meas</span>(manID.UGGA, <span class="at">start.cut =</span> <span class="dv">10</span>, <span class="at">end.cut =</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="auto.deadband-for-automatic-deadband-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="auto.deadband-for-automatic-deadband-calculation"><code>auto.deadband</code> for automatic deadband calculation</h3>
+<p>Calculates an automatic deadband for gas measurements to remove initial non-steady-state data points</p>
+<section id="usage-2" class="level4">
+<h4 class="anchored" data-anchor-id="usage-2">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">auto.deadband</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">UniqueID =</span> <span class="st">"UniqueID"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Etime =</span> <span class="st">"Etime"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments-2" class="level4">
+<h4 class="anchored" data-anchor-id="arguments-2">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>dataframe</code></td>
+<td>a data.frame containing gas measurements and timestamps.</td>
+</tr>
+<tr class="even">
+<td><code>gastype</code></td>
+<td>character string; column name of the gas measurements to analyze.</td>
+</tr>
+<tr class="odd">
+<td><code>UniqueID</code></td>
+<td>character string; name of the column containing measurement IDs.</td>
+</tr>
+<tr class="even">
+<td><code>Etime</code></td>
+<td>character string; name of the column containing elapsed time.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>deadband_result <span class="ot">&lt;-</span> <span class="fu">auto.deadband</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-validate-other" class="level2">
+<h2 class="anchored" data-anchor-id="sec-validate-other">Function Documentation Validation</h2>
+<p>This section automatically validates that all utility functions are properly documented:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>🔧 **Available Utility Functions in goFlux Package:**
+
+- `auto.deadband`
+- `click.peak2`
+- `crop.meas`
+- `iso.comp`
+
+**Total: 4 utility functions available**
+
+✅ This list is automatically updated with the R package.</code></pre>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
