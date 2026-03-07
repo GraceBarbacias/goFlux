@@ -479,6 +479,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-18" id="toc-example-18" class="nav-link" data-scroll-target="#example-18">Example</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#sec-single-Eosense" id="toc-sec-single-Eosense" class="nav-link" data-scroll-target="#sec-single-Eosense">Eosense</a>
+  <ul class="collapse">
+  <li><a href="#sec-single-Eosense-eosMX12" id="toc-sec-single-Eosense-eosMX12" class="nav-link" data-scroll-target="#sec-single-Eosense-eosMX12">eosMX 12-Channel Autochamber Multiplexer</a>
+  <ul class="collapse">
+  <li><a href="#usage-23" id="toc-usage-23" class="nav-link" data-scroll-target="#usage-23">Usage</a></li>
+  <li><a href="#arguments-23" id="toc-arguments-23" class="nav-link" data-scroll-target="#arguments-23">Arguments</a></li>
+  <li><a href="#details-23" id="toc-details-23" class="nav-link" data-scroll-target="#details-23">Details</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
+  <li><a href="#example-19" id="toc-example-19" class="nav-link" data-scroll-target="#example-19">Example</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#sec-validation" id="toc-sec-validation" class="nav-link" data-scroll-target="#sec-validation">Validation: Available Import Functions</a></li>
   </ul></li>
   </ul>
@@ -1089,6 +1100,7 @@ Important
 <li><a href="./import.html#sec-single-Picarro"><strong>Picarro</strong></a>: G2201-<em>i</em>, G2508 and G4301</li>
 <li><a href="./import.html#sec-single-PP-System"><strong>PP-Systems</strong></a>: EGM-5</li>
 <li><a href="./import.html#sec-single-Aeris"><strong>Aeris Technologies</strong></a>: N<sub>2</sub>O/CO<sub>2</sub> high accuracy analyzer and CH<sub>4</sub>/C<sub>2</sub>H<sub>6</sub> natural gas detection system</li>
+<li><a href="./import.html#sec-single-Eosense"><strong>Eosense</strong></a>: eosMX 12-Channel Autochamber Multiplexer</li>
 <li><a href="./import.html#sec-single-HealthyPhoton"><strong>Healthy Photon</strong></a>: HT8850</li>
 <li><a href="./import.html#sec-single-GasmetPD"><strong>GasmetPD</strong></a>: Custom multiplexer from the University of Padova, Italy</li>
 </ul>
@@ -3033,6 +3045,80 @@ Important
 <span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Or save in a RData folder in the working directory</span></span>
 <span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="fu">import.GasmetPD</span>(<span class="at">inputfile =</span> file.path, <span class="at">prec =</span> <span class="fu">c</span>(<span class="fl">1.6</span>, <span class="dv">13</span>, <span class="dv">2</span>, <span class="dv">23</span>, <span class="dv">33</span>), <span class="at">save =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-single-Eosense" class="level2">
+<h2 class="anchored" data-anchor-id="sec-single-Eosense">Eosense</h2>
+<section id="sec-single-Eosense-eosMX12" class="level3">
+<h3 class="anchored" data-anchor-id="sec-single-Eosense-eosMX12">eosMX 12-Channel Autochamber Multiplexer</h3>
+<p>Imports single raw data files from the Eosense 12-Channel Autochamber Multiplexer (automated chamber system with multiple chamber ports).</p>
+<section id="usage-23" class="level4">
+<h4 class="anchored" data-anchor-id="usage-23">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import.eosMX12</span>(</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  inputfile,</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">timezone =</span> <span class="st">"UTC"</span>,</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">save =</span> <span class="cn">FALSE</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments-23" class="level4">
+<h4 class="anchored" data-anchor-id="arguments-23">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>inputfile</code></td>
+<td>character string; the name of a file with the extension .log</td>
+</tr>
+<tr class="even">
+<td><code>timezone</code></td>
+<td>character string; a time zone in which to import the data to POSIXct format. Default is “UTC”. Note about time zone: it is recommended to use the time zone “UTC” to avoid any issue related to summer time and winter time changes.</td>
+</tr>
+<tr class="odd">
+<td><code>save</code></td>
+<td>logical; if <code>save = TRUE</code>, saves the file as an .RData file in a RData folder in the current working directory. If <code>save = FALSE</code>, returns the file in the Console, or load in the Environment if assigned to an object.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="details-23" class="level4">
+<h4 class="anchored" data-anchor-id="details-23">Details</h4>
+<p>The eosMX 12-Channel Autochamber Multiplexer (FRMonitor) files record data from automated chamber measurements including chamber port information, chamber status (open/closed), temperature, pressure, and readings from up to 5 auxiliary (AUX) sensors.</p>
+<p>Note that this function was designed for the following units in the raw file:</p>
+<ul>
+<li>Epoch (unix) time for date/time</li>
+<li>kPa for atmospheric pressure</li>
+<li>Voltage for temperature and AUX sensors</li>
+</ul>
+<p>If your eosMX instrument uses different units, either convert the units after import, change the settings on your instrument, or contact the maintainer of this package for support.</p>
+<p>The imported file serves as an auxiliary file that records chamber metadata (ports, open/close times, environmental conditions) and should be matched with gas concentration data using the <code>autoID</code> function.</p>
+</section>
+<section id="returns" class="level4">
+<h4 class="anchored" data-anchor-id="returns">Returns</h4>
+<p>A data frame containing raw data from the Eosense 12-Channel Autochamber Multiplexer FRMonitor files, with columns recording: chamber port identifier, chamber status (closure/opening times), temperature (in voltage units), pressure, and auxiliary sensor readings.</p>
+</section>
+<section id="example-19" class="level4">
+<h4 class="anchored" data-anchor-id="example-19">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve file path from example file in the goFlux package</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the function system.file</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>file.path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"eosMX12/eosMX12.log"</span>, <span class="at">package =</span> <span class="st">"goFlux"</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import FRMonitor file as auxiliary data</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>imp.eosMX12 <span class="ot">&lt;-</span> <span class="fu">import.eosMX12</span>(<span class="at">inputfile =</span> file.path)</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Or save in a RData folder in the working directory</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="fu">import.eosMX12</span>(<span class="at">inputfile =</span> file.path, <span class="at">save =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Match the multiplexer file with gas data</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(imp.G2508)</span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>autoID.eosMX12 <span class="ot">&lt;-</span> <span class="fu">autoID</span>(imp.G2508, imp.eosMX12)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>

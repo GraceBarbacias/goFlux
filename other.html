@@ -237,21 +237,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
   <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   <li><a href="#additional-utility-functions" id="toc-additional-utility-functions" class="nav-link" data-scroll-target="#additional-utility-functions">Additional Utility Functions</a>
   <ul>
   <li><a href="#crop.meas-for-cropping-measurements" id="toc-crop.meas-for-cropping-measurements" class="nav-link" data-scroll-target="#crop.meas-for-cropping-measurements"><code>crop.meas</code> for cropping measurements</a>
   <ul class="collapse">
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1">Usage</a></li>
   <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
+  <li><a href="#details-1" id="toc-details-1" class="nav-link" data-scroll-target="#details-1">Details</a></li>
+  <li><a href="#returns-1" id="toc-returns-1" class="nav-link" data-scroll-target="#returns-1">Returns</a></li>
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
   </ul></li>
   <li><a href="#auto.deadband-for-automatic-deadband-calculation" id="toc-auto.deadband-for-automatic-deadband-calculation" class="nav-link" data-scroll-target="#auto.deadband-for-automatic-deadband-calculation"><code>auto.deadband</code> for automatic deadband calculation</a>
   <ul class="collapse">
+  <li><a href="#description-1" id="toc-description-1" class="nav-link" data-scroll-target="#description-1">Description</a></li>
   <li><a href="#usage-2" id="toc-usage-2" class="nav-link" data-scroll-target="#usage-2">Usage</a></li>
   <li><a href="#arguments-2" id="toc-arguments-2" class="nav-link" data-scroll-target="#arguments-2">Arguments</a></li>
+  <li><a href="#details-2" id="toc-details-2" class="nav-link" data-scroll-target="#details-2">Details</a></li>
+  <li><a href="#returns-2" id="toc-returns-2" class="nav-link" data-scroll-target="#returns-2">Returns</a></li>
   <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
+  <li><a href="#references-1" id="toc-references-1" class="nav-link" data-scroll-target="#references-1">References</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#sec-validate-other" id="toc-sec-validate-other" class="nav-link" data-scroll-target="#sec-validate-other">Function Documentation Validation</a></li>
@@ -338,6 +348,10 @@ Note
 </tbody>
 </table>
 </section>
+<section id="returns" class="level4">
+<h4 class="anchored" data-anchor-id="returns">Returns</h4>
+<p>A data frame containing the isotopic composition (intercept from the Keeling plot) for each measurement (UniqueID). For CO<sub>2</sub> measurements, the column is named <code>iso.comp</code> (in ‰ relative to the isotope ratio). For N<sub>2</sub>O measurements, two columns are returned: <code>iso.comp_15N</code> and <code>iso.comp_18O</code>, both in ‰.</p>
+</section>
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
 <div class="cell">
@@ -345,21 +359,39 @@ Note
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my.iso.comp <span class="ot">&lt;-</span> <span class="fu">iso.comp</span>(manID.G2201i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
+<section id="details" class="level4">
+<h4 class="anchored" data-anchor-id="details">Details</h4>
+<p>The isotopic composition is determined using the Keeling plot method, which plots the isotope ratios (δ13C, δ15N, or δ18O) against the inverse of the gas concentration. The y-intercept of the linear regression through these points represents the isotopic composition of the source gas.</p>
+<p>For accurate results, ensure that: - Multiple observations per measurement are available to establish a reliable linear relationship - The isotope ratio and gas concentration columns are correctly specified - For N<sub>2</sub>O measurements, both δ15N and δ18O columns must be provided if N<sub>2</sub>O data are present</p>
+<p>The optional <code>save.plots</code> argument produces Keeling plots for visual inspection of the linear fit quality (shown by R² values) for each measurement.</p>
+</section>
+<section id="references" class="level4">
+<h4 class="anchored" data-anchor-id="references">References</h4>
+<p>Keeling, C. D. (1958). The concentration and isotopic abundances of atmospheric carbon dioxide in rural areas. <em>Geochimica et Cosmochimica Acta</em>, 13(4), 322-334.</p>
+</section>
 </section>
 <section id="additional-utility-functions" class="level2">
 <h2 class="anchored" data-anchor-id="additional-utility-functions">Additional Utility Functions</h2>
 <section id="crop.meas-for-cropping-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="crop.meas-for-cropping-measurements"><code>crop.meas</code> for cropping measurements</h3>
-<p>Crops data by selecting a time window within each UniqueID</p>
+<p>Manually edits the observation window of flux measurements by removing data points from the start, end, or by adjusting the deadband. Useful for quality control and measurement refinement.</p>
+<section id="description" class="level4">
+<h4 class="anchored" data-anchor-id="description">Description</h4>
+<p>Crop measurements from the start, from the end, or adjust the deadband. Individual parameters can be provided for each measurement via an auxiliary file, or the same parameters can be applied to all measurements.</p>
+</section>
 <section id="usage-1" class="level4">
 <h4 class="anchored" data-anchor-id="usage-1">Usage</h4>
 <div class="cell" data-code-copy="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crop.meas</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  start.cut,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  end.cut,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">UniqueID =</span> <span class="st">"UniqueID"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">auxfile =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_start =</span> <span class="dv">0</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_end =</span> <span class="dv">0</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">deadband =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">max.obs.length =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cham.close =</span> <span class="st">"start.time"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">cham.open =</span> <span class="st">"end.time"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="arguments-1" class="level4">
@@ -372,43 +404,99 @@ Note
 <tbody>
 <tr class="odd">
 <td><code>dataframe</code></td>
-<td>a data.frame containing gas measurements and a UniqueID per measurement.</td>
+<td>data.frame containing gas measurements from import or ID functions (click.peak2 or manID). Must contain columns: <code>UniqueID</code>, <code>start.time</code>, <code>end.time</code>, and <code>Etime</code>.</td>
 </tr>
 <tr class="even">
-<td><code>start.cut</code></td>
-<td>numerical value; time (in seconds) to start cropping measurements.</td>
+<td><code>auxfile</code></td>
+<td>data.frame with columns for per-measurement adjustments: <code>UniqueID</code>, <code>crop_start</code>, <code>crop_end</code>, <code>deadband</code>, and/or <code>max.obs.length</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>end.cut</code></td>
-<td>numerical value; time (in seconds) to end cropping measurements.</td>
+<td><code>crop_start</code></td>
+<td>numerical; number of observations to remove from measurement start. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
 </tr>
 <tr class="even">
-<td><code>UniqueID</code></td>
-<td>character string; name of the column containing measurement IDs.</td>
+<td><code>crop_end</code></td>
+<td>numerical; number of observations to remove from measurement end. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
+</tr>
+<tr class="odd">
+<td><code>deadband</code></td>
+<td>numerical; define a deadband at the start of measurements (seconds). Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
+</tr>
+<tr class="even">
+<td><code>max.obs.length</code></td>
+<td>numerical; maximum length of measurement (seconds) after <code>cham.close</code>. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
+</tr>
+<tr class="odd">
+<td><code>cham.close</code></td>
+<td>character; if “start.time” (default), original <code>start.time</code> is saved to column <code>cham.close</code>. Set to NULL to drop it.</td>
+</tr>
+<tr class="even">
+<td><code>cham.open</code></td>
+<td>character; if “end.time” (default), original <code>end.time</code> is saved to column <code>cham.open</code>. Set to NULL to drop it.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="details-1" class="level4">
+<h4 class="anchored" data-anchor-id="details-1">Details</h4>
+<p>Note that <code>crop_start</code> and <code>deadband</code> crop the start of measurements in the same way.</p>
+<p>If <code>max.obs.length</code> is defined, <code>end.time</code> is calculated based on <code>cham.close</code> (original <code>start.time</code>) and <code>max.obs.length</code>, regardless of other values. If <code>cham.close = NULL</code>, then <code>end.time</code> is calculated from <code>start.time</code> and <code>max.obs.length</code>.</p>
+<p>If <code>cham.close</code> and <code>cham.open</code> are already present in the dataframe, set both arguments to NULL.</p>
+<p>The arguments <code>crop_start</code> and <code>crop_end</code> accept negative values and can be used to include more data points before and after previously defined <code>start.time</code> and <code>end.time</code>.</p>
+</section>
+<section id="returns-1" class="level4">
+<h4 class="anchored" data-anchor-id="returns-1">Returns</h4>
+<p>A data frame with corrected <code>Etime</code> and <code>flag</code> columns, based on newly defined <code>start.time</code>, <code>end.time</code>, and <code>deadband</code>.</p>
+</section>
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cropped_data <span class="ot">&lt;-</span> <span class="fu">crop.meas</span>(manID.UGGA, <span class="at">start.cut =</span> <span class="dv">10</span>, <span class="at">end.cut =</span> <span class="dv">120</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load example data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.G2201i)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an auxiliary file with per-measurement crop parameters</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>auxfile <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">UniqueID =</span> <span class="fu">c</span>(<span class="st">"meas1"</span>, <span class="st">"meas2"</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_start =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">10</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_end =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply cropping using values from auxiliary file</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>crop.G2201i <span class="ot">&lt;-</span> <span class="fu">crop.meas</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataframe =</span> manID.G2201i,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">auxfile =</span> auxfile,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_start =</span> <span class="st">"aux"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_end =</span> <span class="st">"aux"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, apply same cropping to all measurements</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>crop.G2201i.uniform <span class="ot">&lt;-</span> <span class="fu">crop.meas</span>(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataframe =</span> manID.G2201i,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_start =</span> <span class="dv">5</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">crop_end =</span> <span class="dv">10</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="auto.deadband-for-automatic-deadband-calculation" class="level3">
 <h3 class="anchored" data-anchor-id="auto.deadband-for-automatic-deadband-calculation"><code>auto.deadband</code> for automatic deadband calculation</h3>
-<p>Calculates an automatic deadband for gas measurements to remove initial non-steady-state data points</p>
+<p>Automatically selects a suitable deadband per measurement by defining observation windows and calculating linear model fit at different deadbands to identify the one with the highest coefficient of determination (R²).</p>
+<section id="description-1" class="level4">
+<h4 class="anchored" data-anchor-id="description-1">Description</h4>
+<p>Loops through multiple gas measurements and automatically defines a suitable deadband per measurement based on R² values from linear regressions at different deadband timepoints.</p>
+</section>
 <section id="usage-2" class="level4">
 <h4 class="anchored" data-anchor-id="usage-2">Usage</h4>
 <div class="cell" data-code-copy="false">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">auto.deadband</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">UniqueID =</span> <span class="st">"UniqueID"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Etime =</span> <span class="st">"Etime"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">db.min =</span> <span class="dv">0</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">db.max =</span> <span class="dv">60</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs.win =</span> <span class="dv">90</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mov.win =</span> <span class="dv">10</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">min.r2 =</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="arguments-2" class="level4">
@@ -421,29 +509,66 @@ Note
 <tbody>
 <tr class="odd">
 <td><code>dataframe</code></td>
-<td>a data.frame containing gas measurements and timestamps.</td>
+<td>data.frame; output from import or ID functions. Must contain columns: <code>UniqueID</code>, <code>POSIX.time</code>, <code>start.time</code> (or <code>cham.close</code>), and the specified <code>gastype</code> column.</td>
 </tr>
 <tr class="even">
 <td><code>gastype</code></td>
-<td>character string; column name of the gas measurements to analyze.</td>
+<td>character string; specifies which gas column to use for detecting inflection point. Must be one of: “CO2dry_ppm”, “CH4dry_ppb”, “COdry_ppb”, “N2Odry_ppb”, “NH3dry_ppb”, “NOdry_ppb”, “NO2dry_ppb”, or “H2O_ppm”.</td>
 </tr>
 <tr class="odd">
-<td><code>UniqueID</code></td>
-<td>character string; name of the column containing measurement IDs.</td>
+<td><code>db.min</code></td>
+<td>numerical value (seconds); minimal deadband per measurement. Default is 0. Negative values are accepted.</td>
 </tr>
 <tr class="even">
-<td><code>Etime</code></td>
-<td>character string; name of the column containing elapsed time.</td>
+<td><code>db.max</code></td>
+<td>numerical value (seconds); maximal deadband per measurement. Default is 60. For Reco measurements, a longer deadband (e.g., 90 seconds) is recommended.</td>
+</tr>
+<tr class="odd">
+<td><code>obs.win</code></td>
+<td>numerical value (seconds); maximal observation window to include in linear models. Default is 90 seconds. Keep at least 30 seconds between <code>db.max</code> and <code>obs.win</code> for accurate results.</td>
+</tr>
+<tr class="even">
+<td><code>mov.win</code></td>
+<td>numerical value (seconds); time increment between <code>obs.win</code> from chamber closure to <code>db.max</code>. Default is 10 seconds. Shorter values (e.g., 1s) increase computational time.</td>
+</tr>
+<tr class="odd">
+<td><code>min.r2</code></td>
+<td>numerical value; minimum increase in R² required to accept dropping more data points. Default is 0. Use to restrict longer deadbands and minimize data loss.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="details-2" class="level4">
+<h4 class="anchored" data-anchor-id="details-2">Details</h4>
+<p>For each measurement, a sequence of observation windows is defined from chamber closure (+ <code>mov.win</code>) to <code>obs.win</code>. For each observation window, a linear model is calculated and the R² is extracted. The “best” deadband is selected at the highest R².</p>
+<p>By default, <code>obs.win = 90s</code> based on observations that the most linear part of measurements is often in the first 2 minutes, typical for small chamber sizes (~4L). For longer chamber enclosures, use a longer <code>obs.win</code>.</p>
+<p>In <code>db.min</code> and <code>db.max</code>, negative values are accepted. This is useful when <code>start.time</code> already includes a deadband and <code>cham.close</code> is not provided.</p>
+<p>The argument <code>min.r2</code> can restrict longer deadbands. For example, if R² = 0.990 is found with deadband = 30s and R² = 0.992 with deadband = 40s (considering <code>mov.win = 10</code>), the best deadband is 30s if <code>min.r2 = 0.005</code>. By default (<code>min.r2 = 0</code>), the highest R² selects the best deadband, but this may result in unnecessary data loss.</p>
+<p>The gas species listed are the ones adapted in this package. Contact the maintainer for adaptation of additional gases.</p>
+</section>
+<section id="returns-2" class="level4">
+<h4 class="anchored" data-anchor-id="returns-2">Returns</h4>
+<p>A data.frame with a <code>deadband</code> value per <code>UniqueID</code>, representing the automatically selected deadband in seconds.</p>
+</section>
 <section id="example-2" class="level4">
 <h4 class="anchored" data-anchor-id="example-2">Example</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>deadband_result <span class="ot">&lt;-</span> <span class="fu">auto.deadband</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load example data from UGGA instrument</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"manID.UGGA"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically find best deadband for CO2 measurements</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>auto_db <span class="ot">&lt;-</span> <span class="fu">auto.deadband</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the results</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(auto_db)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the deadband to crop measurements</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>crop_UGGA <span class="ot">&lt;-</span> <span class="fu">crop.meas</span>(manID.UGGA, auto_db, <span class="at">deadband =</span> <span class="st">"aux"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="references-1" class="level4">
+<h4 class="anchored" data-anchor-id="references-1">References</h4>
+<p>Johannesson, C. F., Nordén, J., Lange, H., Silvennoinen, H., &amp; Larsen, K. S. (2024). Optimizing the closure period for improved accuracy of chamber-based greenhouse gas flux estimates. <em>Agricultural and Forest Meteorology</em>, 359, 110289.</p>
 </section>
 </section>
 </section>
