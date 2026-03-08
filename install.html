@@ -323,7 +323,7 @@ Warning
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test that core functions are available</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>core_functions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"goFlux"</span>, <span class="st">"best.flux"</span>, <span class="st">"import2RData"</span>, <span class="st">"autoID"</span>)</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (func <span class="cf">in</span> core_functions) {</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">exists</span>(func, <span class="at">mode =</span> <span class="st">"function"</span>)) {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">exists</span>(func, <span class="at">mode =</span> <span class="st">"function"</span>, <span class="at">where =</span> <span class="fu">asNamespace</span>(<span class="st">"goFlux"</span>))) {</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"✓"</span>, func, <span class="st">"function available</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"✗"</span>, func, <span class="st">"function not found</span><span class="sc">\n</span><span class="st">"</span>)</span>

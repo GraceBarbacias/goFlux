@@ -244,7 +244,7 @@
     "href": "install.html#sec-verify",
     "title": "Installation",
     "section": "Verify installation",
-    "text": "Verify installation\nYou can verify that goFlux is properly installed and all dependencies are available:\n\n# Check if goFlux is installed and can be loaded\nif (requireNamespace(\"goFlux\", quietly = TRUE)) {\n  cat(\"✓ goFlux is installed and available\\n\")\n  cat(\"✓ Version:\", as.character(packageVersion(\"goFlux\")), \"\\n\")\n} else {\n  cat(\"✗ goFlux is not installed or cannot be loaded\\n\")\n}\n\n# Test that core functions are available\ncore_functions &lt;- c(\"goFlux\", \"best.flux\", \"import2RData\", \"autoID\")\nfor (func in core_functions) {\n  if (exists(func, mode = \"function\")) {\n    cat(\"✓\", func, \"function available\\n\")\n  } else {\n    cat(\"✗\", func, \"function not found\\n\")\n  }\n}",
+    "text": "Verify installation\nYou can verify that goFlux is properly installed and all dependencies are available:\n\n# Check if goFlux is installed and can be loaded\nif (requireNamespace(\"goFlux\", quietly = TRUE)) {\n  cat(\"✓ goFlux is installed and available\\n\")\n  cat(\"✓ Version:\", as.character(packageVersion(\"goFlux\")), \"\\n\")\n} else {\n  cat(\"✗ goFlux is not installed or cannot be loaded\\n\")\n}\n\n# Test that core functions are available\ncore_functions &lt;- c(\"goFlux\", \"best.flux\", \"import2RData\", \"autoID\")\nfor (func in core_functions) {\n  if (exists(func, mode = \"function\", where = asNamespace(\"goFlux\"))) {\n    cat(\"✓\", func, \"function available\\n\")\n  } else {\n    cat(\"✗\", func, \"function not found\\n\")\n  }\n}",
     "crumbs": [
       "Installation"
     ]
