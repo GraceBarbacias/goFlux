@@ -466,37 +466,43 @@ Note
 <h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 28%">
+<col style="width: 71%">
 </colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><code>flux.result</code></td>
-<td>data.frame; output from the function <code>goFlux</code>.</td>
+<td style="text-align: left;"><code>flux.result</code></td>
+<td style="text-align: left;">data.frame; output from the function <code>goFlux</code>.</td>
 </tr>
 <tr class="even">
-<td><code>criteria</code></td>
-<td>character vector; criteria used to assess the goodness of fit of the linear and non-linear flux estimates. Must be at least one the following: “MAE”, “RMSE”, “AICc”, “SE”, “g.factor”, “kappa”, “MDF”, “nb.obs”, “p-value”, or “intercept”. The default is all of them.</td>
+<td style="text-align: left;"><code>criteria</code></td>
+<td style="text-align: left;">character vector; criteria used to assess the goodness of fit of the linear and non-linear flux estimates. Must be at least one the following: “MAE”, “RMSE”, “AICc”, “SE”, “g.factor”, “kappa”, “MDF”, “nb.obs”, “p-value”, or “intercept”. The default is all of them.</td>
 </tr>
 <tr class="odd">
-<td><code>intercept.lim</code></td>
-<td>numerical vector of length 2; inferior and superior limits of the intercept (initial concentration; C<sub>0</sub>). Must be the same units as <code>gastype</code> in the <code>goFlux</code> function. If <code>intercept.lim = NULL</code>, the limits are calculated from the true values of C<sub>0</sub> and C<sub>t</sub> for each measurement.</td>
+<td style="text-align: left;"><code>intercept.lim</code></td>
+<td style="text-align: left;">numerical vector of length 2; inferior and superior limits of the intercept (initial concentration; C<sub>0</sub>). Must be the same units as <code>gastype</code> in the <code>goFlux</code> function. If <code>intercept.lim = NULL</code>, the limits are calculated from the true values of C<sub>0</sub> and C<sub>t</sub> for each measurement.</td>
 </tr>
 <tr class="even">
-<td><code>g.limit</code></td>
-<td>numerical value; maximal limit of the g.factor (ratio between <code>HM.flux</code> and <code>LM.flux</code>). Recommended thresholds for the g.factor are 4 (flexible), 2 (medium), or 1.25 (conservative). The default limit is <code>g.limit = 2</code>.</td>
+<td style="text-align: left;"><code>g.limit</code></td>
+<td style="text-align: left;">numerical value; maximal limit of the g.factor (ratio between <code>HM.flux</code> and <code>LM.flux</code>). Recommended thresholds for the g.factor are 4 (flexible), 2 (medium), or 1.25 (conservative). The default limit is <code>g.limit = 2</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>p.val</code></td>
-<td>numerical value; a limit for a statistically detectable flux. The default threshold is <em>p-value</em> &lt; 0.05.</td>
+<td style="text-align: left;"><code>p.val</code></td>
+<td style="text-align: left;">numerical value; a limit for a statistically detectable flux. The default threshold is <em>p-value</em> &lt; 0.05.</td>
 </tr>
 <tr class="even">
-<td><code>k.ratio</code></td>
-<td>numerical value; maximal limit of the ratio between kappa and the kappa-max. Default is <code>k.ratio = 1</code>.</td>
+<td style="text-align: left;"><code>k.ratio</code></td>
+<td style="text-align: left;">numerical value; maximal limit of the ratio between kappa and the kappa-max. Default is <code>k.ratio = 1</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>warn.length</code></td>
-<td>numerical value; limit under which a measurement is flagged for being too short (<code>nb.obs &lt; warn.length</code>).</td>
+<td style="text-align: left;"><code>warn.length</code></td>
+<td style="text-align: left;">numerical value; limit under which a measurement is flagged for being too short (<code>nb.obs &lt; warn.length</code>).</td>
 </tr>
 </tbody>
 </table>

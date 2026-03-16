@@ -325,25 +325,31 @@ Note
 <h4 class="anchored" data-anchor-id="arguments">Arguments</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 28%">
+<col style="width: 71%">
 </colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><code>dataframe</code></td>
-<td>a data.frame containing measurements of isotopic fractions of CO<sub>2</sub> or N<sub>2</sub>O and a <code>UniqueID</code> (or <code>chamID</code>) per measurements.</td>
+<td style="text-align: left;"><code>dataframe</code></td>
+<td style="text-align: left;">a data.frame containing measurements of isotopic fractions of CO<sub>2</sub> or N<sub>2</sub>O and a <code>UniqueID</code> (or <code>chamID</code>) per measurements.</td>
 </tr>
 <tr class="even">
-<td><code>CO2dry_ppm</code>, <code>delta_13C</code></td>
-<td>character string; specifies which columns should be used for CO<sub>2</sub> measurements, and the delta 13C, respectively.</td>
+<td style="text-align: left;"><code>CO2dry_ppm</code>, <code>delta_13C</code></td>
+<td style="text-align: left;">character string; specifies which columns should be used for CO<sub>2</sub> measurements, and the delta 13C, respectively.</td>
 </tr>
 <tr class="odd">
-<td><code>N2Odry_ppb</code>, <code>delta_15N</code>, <code>delta_18O</code></td>
-<td>character string; specifies which columns should be used for N<sub>2</sub>O measurements, the delta 15N and the delta 18O, respectively.</td>
+<td style="text-align: left;"><code>N2Odry_ppb</code>, <code>delta_15N</code>, <code>delta_18O</code></td>
+<td style="text-align: left;">character string; specifies which columns should be used for N<sub>2</sub>O measurements, the delta 15N and the delta 18O, respectively.</td>
 </tr>
 <tr class="even">
-<td><code>save.plots</code></td>
-<td>character string; a file path with the extension .pdf to save Keeling plots. By default plots are not saved.</td>
+<td style="text-align: left;"><code>save.plots</code></td>
+<td style="text-align: left;">character string; a file path with the extension .pdf to save Keeling plots. By default plots are not saved.</td>
 </tr>
 </tbody>
 </table>
@@ -398,41 +404,47 @@ Note
 <h4 class="anchored" data-anchor-id="arguments-1">Arguments</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 28%">
+<col style="width: 71%">
 </colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><code>dataframe</code></td>
-<td>data.frame containing gas measurements from import or ID functions (click.peak2 or manID). Must contain columns: <code>UniqueID</code>, <code>start.time</code>, <code>end.time</code>, and <code>Etime</code>.</td>
+<td style="text-align: left;"><code>dataframe</code></td>
+<td style="text-align: left;">data.frame containing gas measurements from import or ID functions (click.peak2 or manID). Must contain columns: <code>UniqueID</code>, <code>start.time</code>, <code>end.time</code>, and <code>Etime</code>.</td>
 </tr>
 <tr class="even">
-<td><code>auxfile</code></td>
-<td>data.frame with columns for per-measurement adjustments: <code>UniqueID</code>, <code>crop_start</code>, <code>crop_end</code>, <code>deadband</code>, and/or <code>max.obs.length</code>.</td>
+<td style="text-align: left;"><code>auxfile</code></td>
+<td style="text-align: left;">data.frame with columns for per-measurement adjustments: <code>UniqueID</code>, <code>crop_start</code>, <code>crop_end</code>, <code>deadband</code>, and/or <code>max.obs.length</code>.</td>
 </tr>
 <tr class="odd">
-<td><code>crop_start</code></td>
-<td>numerical; number of observations to remove from measurement start. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
+<td style="text-align: left;"><code>crop_start</code></td>
+<td style="text-align: left;">numerical; number of observations to remove from measurement start. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
 </tr>
 <tr class="even">
-<td><code>crop_end</code></td>
-<td>numerical; number of observations to remove from measurement end. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
+<td style="text-align: left;"><code>crop_end</code></td>
+<td style="text-align: left;">numerical; number of observations to remove from measurement end. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Accepts negative values to include more data. Default is 0.</td>
 </tr>
 <tr class="odd">
-<td><code>deadband</code></td>
-<td>numerical; define a deadband at the start of measurements (seconds). Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
+<td style="text-align: left;"><code>deadband</code></td>
+<td style="text-align: left;">numerical; define a deadband at the start of measurements (seconds). Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
 </tr>
 <tr class="even">
-<td><code>max.obs.length</code></td>
-<td>numerical; maximum length of measurement (seconds) after <code>cham.close</code>. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
+<td style="text-align: left;"><code>max.obs.length</code></td>
+<td style="text-align: left;">numerical; maximum length of measurement (seconds) after <code>cham.close</code>. Use “aux” to apply values from <code>auxfile</code> per UniqueID. Default is NULL.</td>
 </tr>
 <tr class="odd">
-<td><code>cham.close</code></td>
-<td>character; if “start.time” (default), original <code>start.time</code> is saved to column <code>cham.close</code>. Set to NULL to drop it.</td>
+<td style="text-align: left;"><code>cham.close</code></td>
+<td style="text-align: left;">character; if “start.time” (default), original <code>start.time</code> is saved to column <code>cham.close</code>. Set to NULL to drop it.</td>
 </tr>
 <tr class="even">
-<td><code>cham.open</code></td>
-<td>character; if “end.time” (default), original <code>end.time</code> is saved to column <code>cham.open</code>. Set to NULL to drop it.</td>
+<td style="text-align: left;"><code>cham.open</code></td>
+<td style="text-align: left;">character; if “end.time” (default), original <code>end.time</code> is saved to column <code>cham.open</code>. Set to NULL to drop it.</td>
 </tr>
 </tbody>
 </table>
@@ -503,37 +515,43 @@ Note
 <h4 class="anchored" data-anchor-id="arguments-2">Arguments</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 28%">
+<col style="width: 71%">
 </colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><code>dataframe</code></td>
-<td>data.frame; output from import or ID functions. Must contain columns: <code>UniqueID</code>, <code>POSIX.time</code>, <code>start.time</code> (or <code>cham.close</code>), and the specified <code>gastype</code> column.</td>
+<td style="text-align: left;"><code>dataframe</code></td>
+<td style="text-align: left;">data.frame; output from import or ID functions. Must contain columns: <code>UniqueID</code>, <code>POSIX.time</code>, <code>start.time</code> (or <code>cham.close</code>), and the specified <code>gastype</code> column.</td>
 </tr>
 <tr class="even">
-<td><code>gastype</code></td>
-<td>character string; specifies which gas column to use for detecting inflection point. Must be one of: “CO2dry_ppm”, “CH4dry_ppb”, “COdry_ppb”, “N2Odry_ppb”, “NH3dry_ppb”, “NOdry_ppb”, “NO2dry_ppb”, or “H2O_ppm”.</td>
+<td style="text-align: left;"><code>gastype</code></td>
+<td style="text-align: left;">character string; specifies which gas column to use for detecting inflection point. Must be one of: “CO2dry_ppm”, “CH4dry_ppb”, “COdry_ppb”, “N2Odry_ppb”, “NH3dry_ppb”, “NOdry_ppb”, “NO2dry_ppb”, or “H2O_ppm”.</td>
 </tr>
 <tr class="odd">
-<td><code>db.min</code></td>
-<td>numerical value (seconds); minimal deadband per measurement. Default is 0. Negative values are accepted.</td>
+<td style="text-align: left;"><code>db.min</code></td>
+<td style="text-align: left;">numerical value (seconds); minimal deadband per measurement. Default is 0. Negative values are accepted.</td>
 </tr>
 <tr class="even">
-<td><code>db.max</code></td>
-<td>numerical value (seconds); maximal deadband per measurement. Default is 60. For Reco measurements, a longer deadband (e.g., 90 seconds) is recommended.</td>
+<td style="text-align: left;"><code>db.max</code></td>
+<td style="text-align: left;">numerical value (seconds); maximal deadband per measurement. Default is 60. For Reco measurements, a longer deadband (e.g., 90 seconds) is recommended.</td>
 </tr>
 <tr class="odd">
-<td><code>obs.win</code></td>
-<td>numerical value (seconds); maximal observation window to include in linear models. Default is 90 seconds. Keep at least 30 seconds between <code>db.max</code> and <code>obs.win</code> for accurate results.</td>
+<td style="text-align: left;"><code>obs.win</code></td>
+<td style="text-align: left;">numerical value (seconds); maximal observation window to include in linear models. Default is 90 seconds. Keep at least 30 seconds between <code>db.max</code> and <code>obs.win</code> for accurate results.</td>
 </tr>
 <tr class="even">
-<td><code>mov.win</code></td>
-<td>numerical value (seconds); time increment between <code>obs.win</code> from chamber closure to <code>db.max</code>. Default is 10 seconds. Shorter values (e.g., 1s) increase computational time.</td>
+<td style="text-align: left;"><code>mov.win</code></td>
+<td style="text-align: left;">numerical value (seconds); time increment between <code>obs.win</code> from chamber closure to <code>db.max</code>. Default is 10 seconds. Shorter values (e.g., 1s) increase computational time.</td>
 </tr>
 <tr class="odd">
-<td><code>min.r2</code></td>
-<td>numerical value; minimum increase in R² required to accept dropping more data points. Default is 0. Use to restrict longer deadbands and minimize data loss.</td>
+<td style="text-align: left;"><code>min.r2</code></td>
+<td style="text-align: left;">numerical value; minimum increase in R² required to accept dropping more data points. Default is 0. Use to restrict longer deadbands and minimize data loss.</td>
 </tr>
 </tbody>
 </table>
