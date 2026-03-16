@@ -306,7 +306,6 @@ window.Quarto = {
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul></li>
   <li><a href="#sec-save" id="toc-sec-save" class="nav-link" data-scroll-target="#sec-save">Save results</a></li>
-  <li><a href="#sec-validate-bestflux" id="toc-sec-validate-bestflux" class="nav-link" data-scroll-target="#sec-validate-bestflux">Function Documentation Validation</a></li>
   </ul>
 </nav>
     </div>
@@ -533,27 +532,6 @@ Note
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.RData"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to Excel</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="sec-validate-bestflux" class="level2">
-<h2 class="anchored" data-anchor-id="sec-validate-bestflux">Function Documentation Validation</h2>
-<p>This section automatically validates that the documentation above matches the actual <code>best.flux</code> function:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>📋 **Current best.flux Function Arguments:**
-
-- `flux.result` (required)
-- `criteria` = c("MAE", "RMSE", "AICc", "SE", "g.factor", "kappa"
-- `intercept.lim` (required)
-- `g.limit` = 2
-- `p.val` = 0.05
-- `k.ratio` = 1
-- `warn.length` = 60
-
-**Total: 7 arguments**
-
-✅ This documentation is automatically synchronized with the R package.</code></pre>
-</div>
 </div>
 
 
