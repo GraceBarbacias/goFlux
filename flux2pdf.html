@@ -235,17 +235,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#flux.plot" id="toc-flux.plot" class="nav-link active" data-scroll-target="#flux.plot"><strong>flux.plot</strong></a>
   <ul>
+  <li><a href="#flux2pdf-for-save-plots-to-pdf" id="toc-flux2pdf-for-save-plots-to-pdf" class="nav-link" data-scroll-target="#flux2pdf-for-save-plots-to-pdf"><code>flux2pdf</code> for save plots to pdf</a>
+  <ul class="collapse">
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
   <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1">Usage</a></li>
+  <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
   <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
   <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
   </ul></li>
   <li><a href="#flux2pdf" id="toc-flux2pdf" class="nav-link" data-scroll-target="#flux2pdf"><strong>flux2pdf</strong></a>
   <ul>
-  <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1">Usage</a></li>
-  <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#usage-2" id="toc-usage-2" class="nav-link" data-scroll-target="#usage-2">Usage</a></li>
+  <li><a href="#arguments-2" id="toc-arguments-2" class="nav-link" data-scroll-target="#arguments-2">Arguments</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,8 +281,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, after finding the best flux estimates, the user can plot the results and visually inspect the measurements using the function <code>flux.plot</code> and save the plots as pdf using <code>flux2pdf</code>.</p>
 <section id="flux.plot" class="level2">
 <h2 class="anchored" data-anchor-id="flux.plot"><strong>flux.plot</strong></h2>
-<section id="usage" class="level3">
-<h3 class="anchored" data-anchor-id="usage">Usage</h3>
+<section id="flux2pdf-for-save-plots-to-pdf" class="level3">
+<h3 class="anchored" data-anchor-id="flux2pdf-for-save-plots-to-pdf"><code>flux2pdf</code> for save plots to pdf</h3>
+<p>Save plots to pdf</p>
+<section id="usage" class="level4">
+<h4 class="anchored" data-anchor-id="usage">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(plot.list, <span class="at">outfile =</span> <span class="cn">NULL</span>, <span class="at">width =</span> <span class="fl">11.6</span>, <span class="at">height =</span> <span class="fl">8.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments" class="level4">
+<h4 class="anchored" data-anchor-id="arguments">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>plot.list</code></td>
+<td style="text-align: left;">a list of plots; output from the function flux.plot .</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>outfile</code></td>
+<td style="text-align: left;">a character string indicating the full name of the pdf output file (including the path and ‘.pdf’ extension). If outfile is not provided, it will be saved in R’s temporary direc…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>width</code></td>
+<td style="text-align: left;">numerical value; width of the pdf page. Default is 11.6 inches.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>height</code></td>
+<td style="text-align: left;">numerical value; height of the pdf page. Default is 8.2 inches.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>criteria <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>, <span class="st">"SErel"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, criteria)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>CO2_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">flux.results =</span> CO2_best, <span class="at">dataframe =</span> manID.UGGA,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">gastype =</span> <span class="st">"CO2dry_ppm"</span>, <span class="at">quality.check =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>, <span class="st">"SErel"</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"Ci"</span>, <span class="st">"C0"</span>, <span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(CO2_plots)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="usage-1" class="level3">
+<h3 class="anchored" data-anchor-id="usage-1">Usage</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,24 +366,24 @@ Note
 </div>
 </div>
 <div class="cell" data-code-copy="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flux.plot</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  flux.results,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">shoulder =</span> <span class="dv">30</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quality.check =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">flux.unit =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">flux.term.unit =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">best.model =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.val.disp =</span> <span class="st">"round"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">side =</span> <span class="st">"left"</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flux.plot</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  flux.results,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">shoulder =</span> <span class="dv">30</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quality.check =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">flux.unit =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">flux.term.unit =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">best.model =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.val.disp =</span> <span class="st">"round"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">side =</span> <span class="st">"left"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="arguments" class="level3">
-<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<section id="arguments-1" class="level3">
+<h3 class="anchored" data-anchor-id="arguments-1">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 4%">
@@ -379,26 +454,26 @@ For example, one may want to use nmol kg<sup>-1</sup>h<sup>-1</sup> for incubate
 <h3 class="anchored" data-anchor-id="value">Value</h3>
 <p>The function returns a list of plots, one per <code>UniqueID</code>, drawn from flux results (output from the functions <code>goFlux</code> and <code>best.flux</code>).</p>
 </section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example</h3>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CO2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>CO2_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CO2_best, manID.UGGA, <span class="st">"CO2dry_ppm"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>), </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>), </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">quality.check =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CH4</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>CH4_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CH4dry_ppb"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>CH4_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CH4_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>CH4_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CH4_best, manID.UGGA, <span class="st">"CH4dry_ppb"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>), </span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>), </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">quality.check =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CO2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>CO2_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CO2_best, manID.UGGA, <span class="st">"CO2dry_ppm"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>), </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">quality.check =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># CH4</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>CH4_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CH4dry_ppb"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>CH4_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CH4_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>CH4_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CH4_best, manID.UGGA, <span class="st">"CH4dry_ppb"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.legend =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>), </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">plot.display =</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>), </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">quality.check =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -412,21 +487,21 @@ Tip
 <div class="callout-body-container callout-body">
 <p>To lighten your script, you can define arguments outside a function by storing their value in an object that is then used in the function instead. However, remember to use the arguments in the same order as they are required in the function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># best.flux</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>criteria <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, criteria)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>CH4_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CH4_flux, criteria)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># flux.plot </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plot.legend <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plot.display <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>quality.check <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>CO2_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CO2_best, manID.UGGA, <span class="st">"CO2dry_ppm"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       plot.legend, plot.display, quality.check)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>CH4_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CH4_best, manID.UGGA, <span class="st">"CH4dry_ppb"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                       plot.legend, plot.display, quality.check)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># best.flux</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>criteria <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, criteria)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>CH4_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CH4_flux, criteria)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># flux.plot </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plot.legend <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"k.ratio"</span>, <span class="st">"g.factor"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plot.display <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"MDF"</span>, <span class="st">"prec"</span>, <span class="st">"nb.obs"</span>, <span class="st">"flux.term"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>quality.check <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>CO2_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CO2_best, manID.UGGA, <span class="st">"CO2dry_ppm"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                       plot.legend, plot.display, quality.check)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>CH4_plots <span class="ot">&lt;-</span> <span class="fu">flux.plot</span>(CH4_best, manID.UGGA, <span class="st">"CH4dry_ppb"</span>, <span class="at">shoulder=</span><span class="dv">20</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                       plot.legend, plot.display, quality.check)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This trick can help you reduce repetition and mistakes in your script.</p>
 </div>
@@ -443,8 +518,8 @@ Tip
 <div class="callout-body-container callout-body">
 <p>The function <code>flux.plot</code> creates a list of plots, one per UniqueID. Multiple lists (e.g.&nbsp;one per <code>gastype</code>) can be combined to save all plots together with the <code>flux2pdf</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plot lists into one list</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plot.list <span class="ot">&lt;-</span> <span class="fu">c</span>(CO2_plots, CH4_plots)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plot lists into one list</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plot.list <span class="ot">&lt;-</span> <span class="fu">c</span>(CO2_plots, CH4_plots)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -453,14 +528,14 @@ Tip
 <section id="flux2pdf" class="level2">
 <h2 class="anchored" data-anchor-id="flux2pdf"><strong>flux2pdf</strong></h2>
 <p>The list of plots created with <code>flux.plot</code> can now be saved as a pdf using the function <code>flux2pdf</code>.</p>
-<section id="usage-1" class="level3">
-<h3 class="anchored" data-anchor-id="usage-1">Usage</h3>
+<section id="usage-2" class="level3">
+<h3 class="anchored" data-anchor-id="usage-2">Usage</h3>
 <div class="cell" data-code-copy="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(plot.list, <span class="at">outfile =</span> <span class="cn">NULL</span>, <span class="at">width =</span> <span class="fl">11.6</span>, <span class="at">height =</span> <span class="fl">8.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(plot.list, <span class="at">outfile =</span> <span class="cn">NULL</span>, <span class="at">width =</span> <span class="fl">11.6</span>, <span class="at">height =</span> <span class="fl">8.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="arguments-1" class="level3">
-<h3 class="anchored" data-anchor-id="arguments-1">Arguments</h3>
+<section id="arguments-2" class="level3">
+<h3 class="anchored" data-anchor-id="arguments-2">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 7%">
@@ -486,11 +561,11 @@ Tip
 </tbody>
 </table>
 </section>
-<section id="example-1" class="level3">
-<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plots to pdf</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(plot.list, <span class="at">outfile =</span> <span class="st">"demo.results.pdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plots to pdf</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">flux2pdf</span>(plot.list, <span class="at">outfile =</span> <span class="st">"demo.results.pdf"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here is an example of how the plots are saved as pdf:</p>
 <div id="fig-flux2pdf" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">

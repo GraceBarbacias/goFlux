@@ -285,6 +285,13 @@ window.Quarto = {
   <li><a href="#criteria-for-flux-estimate-selection-and-flagging" id="toc-criteria-for-flux-estimate-selection-and-flagging" class="nav-link active" data-scroll-target="#criteria-for-flux-estimate-selection-and-flagging"><strong>Criteria for flux estimate selection and flagging</strong></a>
   <ul>
   <li><a href="#assumed-non-linearity" id="toc-assumed-non-linearity" class="nav-link" data-scroll-target="#assumed-non-linearity">Assumed non-linearity</a></li>
+  <li><a href="#best.flux-for-automatic-selection-of-best-flux-estimate" id="toc-best.flux-for-automatic-selection-of-best-flux-estimate" class="nav-link" data-scroll-target="#best.flux-for-automatic-selection-of-best-flux-estimate"><code>best.flux</code> for automatic selection of best flux estimate</a>
+  <ul class="collapse">
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
   <li><a href="#g.factor" id="toc-g.factor" class="nav-link" data-scroll-target="#g.factor">g.factor</a></li>
   <li><a href="#minimal-detectable-flux" id="toc-minimal-detectable-flux" class="nav-link" data-scroll-target="#minimal-detectable-flux">Minimal Detectable Flux (MDF)</a></li>
   <li><a href="#kappa-ratio" id="toc-kappa-ratio" class="nav-link" data-scroll-target="#kappa-ratio">Kappa ratio</a></li>
@@ -298,12 +305,12 @@ window.Quarto = {
   <li><a href="#statistically-significant-flux-p-value" id="toc-statistically-significant-flux-p-value" class="nav-link" data-scroll-target="#statistically-significant-flux-p-value">Statistically significant flux (<em>p-value</em>)</a></li>
   <li><a href="#number-of-observations" id="toc-number-of-observations" class="nav-link" data-scroll-target="#number-of-observations">Number of observations</a></li>
   </ul></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage"><strong>Usage</strong></a>
+  <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1"><strong>Usage</strong></a>
   <ul>
-  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
-  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
+  <li><a href="#details-1" id="toc-details-1" class="nav-link" data-scroll-target="#details-1">Details</a></li>
   <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
   </ul></li>
   <li><a href="#sec-save" id="toc-sec-save" class="nav-link" data-scroll-target="#sec-save">Save results</a></li>
   </ul>
@@ -353,6 +360,93 @@ window.Quarto = {
 <p>Although linear models have predominantly been used in past NSS chamber applications, the true exchange rate is only linear at the moment of chamber deployment. Indeed, molecular diffusion theory states that chamber feedback leads to declining gradients of the relationship between concentration and time <span class="citation" data-cites="livingston2006 hutchinson1981">(<a href="#ref-hutchinson1981" role="doc-biblioref">Hutchinson &amp; Mosier, 1981</a>; <a href="#ref-livingston2006" role="doc-biblioref">Gerald P. Livingston et al., 2006</a>)</span>. The consequence of using a linear model is that the flux estimate will always underestimate the true flux <span class="citation" data-cites="matthias1978 jury1982 hüppi2018 livingston2005 livingston2006 anthony1995 hutchinson2003">(<a href="#ref-anthony1995" role="doc-biblioref">Anthony et al., 1995</a>; <a href="#ref-hüppi2018" role="doc-biblioref">Hüppi et al., 2018</a>; <a href="#ref-hutchinson2003" role="doc-biblioref">Hutchinson &amp; Rochette, 2003</a>; <a href="#ref-jury1982" role="doc-biblioref">Jury et al., 1982</a>; <a href="#ref-livingston2005" role="doc-biblioref">Gerald P. Livingston et al., 2005</a>, <a href="#ref-livingston2006" role="doc-biblioref">2006</a>; <a href="#ref-matthias1978" role="doc-biblioref">Matthias et al., 1978</a>)</span>.</p>
 <p>The underestimation in the flux estimate when applying a linear model to inherently non-linear measurements has long been assumed negligible when measurements appear to be linear <span class="citation" data-cites="livingston1995enclosure davidson2002">(<a href="#ref-davidson2002" role="doc-biblioref">Davidson et al., 2002</a>; <a href="#ref-livingston1995enclosure" role="doc-biblioref">GP Livingston &amp; Hutchinson, 1995</a>)</span>, however, this error is not negligible and thus pre-deployment emission rates estimated with linear models have been systematically and often substantially underestimated in nearly all NSS chamber applications <span class="citation" data-cites="matthias1978 jury1982 anthony1995 hutchinson2003 livingston2005">(<a href="#ref-anthony1995" role="doc-biblioref">Anthony et al., 1995</a>; <a href="#ref-hutchinson2003" role="doc-biblioref">Hutchinson &amp; Rochette, 2003</a>; <a href="#ref-jury1982" role="doc-biblioref">Jury et al., 1982</a>; <a href="#ref-livingston2005" role="doc-biblioref">Gerald P. Livingston et al., 2005</a>; <a href="#ref-matthias1978" role="doc-biblioref">Matthias et al., 1978</a>)</span>.</p>
 <p>One could argue that using a non-linear model is only valid if one can be sure that there is no physical disturbances caused by the chamber at the moment of deployment, e.g.&nbsp;pressure fluctuations <span class="citation" data-cites="conen1998">(<a href="#ref-conen1998" role="doc-biblioref">CONEN &amp; SMITH, 1998</a>)</span>, gas leakage <span class="citation" data-cites="livingston2006">(<a href="#ref-livingston2006" role="doc-biblioref">Gerald P. Livingston et al., 2006</a>)</span> or turbulence <span class="citation" data-cites="hutchinson2015">(<a href="#ref-hutchinson2015" role="doc-biblioref">Hutchinson &amp; Livingston, 2015</a>)</span>. These artefacts may cause a pronounced concentration increase in the chamber at the beginning of the measurement, leading to an overestimation of the flux estimate <span class="citation" data-cites="forbrich2010">(<a href="#ref-forbrich2010" role="doc-biblioref">Forbrich et al., 2010</a>)</span>. However, we argue that poor quality measurements can easily be identified and dealt with, either by modifying the window of observation or removing the measurement. In cases where measurements have an especially poor quality, the <code>best.flux</code> function will automatically flag these measurements for quality filtering and select the linear model as the flux best estimate.</p>
+</section>
+<section id="best.flux-for-automatic-selection-of-best-flux-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="best.flux-for-automatic-selection-of-best-flux-estimate"><code>best.flux</code> for automatic selection of best flux estimate</h3>
+<p>Automatic selection of best flux estimate</p>
+<section id="usage" class="level4">
+<h4 class="anchored" data-anchor-id="usage">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">best.flux</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  flux.result,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"SE"</span>, <span class="st">"g.factor"</span>, <span class="st">"kappa"</span>, <span class="st">"MDF"</span>, <span class="st">"nb.obs"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"intercept"</span>, <span class="st">"p-value"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">intercept.lim =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">g.limit =</span> <span class="dv">2</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.val =</span> <span class="fl">0.05</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.ratio =</span> <span class="dv">1</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments" class="level4">
+<h4 class="anchored" data-anchor-id="arguments">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>flux.result</code></td>
+<td style="text-align: left;">data.frame; output from the function goFlux .</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>criteria</code></td>
+<td style="text-align: left;">character vector; criteria used to assess the goodness of fit of the LM or HM flux estimates. Must be at least one the following: “MAE”, “RMSE”, “AICc”, “SE”, “g.factor”, “kappa…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>intercept.lim</code></td>
+<td style="text-align: left;">numerical vector of length 2; inferior and superior limits of the intercept (initial concentration; html C<sub>0</sub> C[0] ASCII ). Must be the same units as gastype in the goF…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>g.limit</code></td>
+<td style="text-align: left;">numerical value; maximum limit of the g-factor (ratio between HM.flux and LM.flux ). Recommended thresholds for the g-factor are 4 (flexible), 2 (medium), or 1.25 (conservative)…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>p.val</code></td>
+<td style="text-align: left;">numerical value; the minimal limit to indicate a slope significantly larger than zero. The default threshold is p-value &lt; 0.05.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>k.ratio</code></td>
+<td style="text-align: left;">numerical value; maximum limit of the ratio between kappa and the kappa-max. Default is k.ratio = 1 .</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>warn.length</code></td>
+<td style="text-align: left;">numerical value; limit under which a measurement is flagged for being too short ( nb.obs &lt; warn.length ).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="details" class="level4">
+<h4 class="anchored" data-anchor-id="details">Details</h4>
+<p>In , the indices of model fit “MAE”, “RMSE” and “SE” all have a threshold. For MAE and RMSE, the threshold is instrument precision (1 , ) ). For SE, the threshold is the instrument accuracy (1 , ) / , ) ). These indices also compare the two models (linear, LM, and non-linear, HM). The selection of the best model based on indices of model fit (“MAE”, “RMSE”, “AICc” and “SE”) is based on a scoring system. Both models start with a score of 0. For each criteria, whichever model performs worst is given +1. After all selected criteria have been evaluated, the model with the lowest score wins. In case of a tie, the HM flux estimate is always chosen by default, as non-linearity is assumed. The score is printed in the columns HM.score and LM.score. The indicates a threshold for the ) , which is the ratio between a non-linear flux estimate and a linear flux estimate. With the ) function, one can choose a limit at which the HM model is deemed to overestimate , ), , ))) . Recommended thresholds for the g-factor are &lt;4 for a flexible threshold, &lt;2 for a medium threshold, or &lt;1.25 for a more conservative threshold. The default threshold is . If the g-factor is above the specified threshold, the best flux estimate will switch to LM instead of HM and give a warning in the columns and . The minimal detectable flux ( ) ) is calculated from the instrument precision, the measurement time and the flux.term. Flux estimates below the MDF are considered under the detection limit, but not null. Therefore, the function will not return a 0. There will simply be a warning in the columns , or to warn of a flux estimate under the detection limit. No best flux estimate is chosen based on MDF. The parameter kappa determines the curvature of the non-linear regression in the Hutchinson and Mosier model. A maximum value of kappa, ) is included in the ) function, so that the HM regression cannot exceed this maximum curvature. In the function ) , one can choose the linear flux estimate over the HM flux estimate based on the ratio between kappa and kappa-max ( ). The ratio is expressed as a percentage, where 1 indicates , and 0.5 indicates . The default setting is . If is larger than , a warning is issued in the columns and . If the initial gas concentration ( , ), , ))) ) calculated for the flux estimates ( and ) deviates from the true ( , ), , ))) ) by more or less than 10% of the difference between , ), , ))) and the final gas concentration at the end of the measurement ( , ), , ))) ), a warning is issued in the columns , or to warn of an intercept out of bounds. Alternatively, one can provide boundaries for the intercept, for example: “) for a true , ), , ))) of 400 ppm. The argument is only applicable to the linear flux. Under the defined , the slope of the linear flux estimate is deemed non-significant, i. e., flux under the detection limit. The default threshold is . No best flux estimate is chosen based on . If , a warning is given in the columns and to warn of an estimated flux below the detection limit. is the limit below which the chamber closure time is flagged for being too short ( ). Portable greenhouse gas analyzers typically measure at a frequency of 1 Hz. Therefore, for the default setting of , the chamber closure time should be approximately one minute (60 seconds). If the number of observations is smaller than the threshold, a warning is issued in the column .</p>
+</section>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 </section>
 <section id="g.factor" class="level3">
 <h3 class="anchored" data-anchor-id="g.factor">g.factor</h3>
@@ -435,8 +529,8 @@ Note
 <p>Limit below which a measurement is flagged for being too short (<code>nb.obs &lt; warn.length</code>). Portable greenhouse gas analyzers typically measure at a frequency of 1 Hz. Therefore, for the default setting of <code>warn.length = 60</code>, the chamber closure time should be approximately one minute (60 seconds). If the number of observations is smaller than the threshold, a warning is issued in the column <code>quality.check</code>.</p>
 </section>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage"><strong>Usage</strong></h2>
+<section id="usage-1" class="level2">
+<h2 class="anchored" data-anchor-id="usage-1"><strong>Usage</strong></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -451,19 +545,19 @@ Note
 </div>
 </div>
 <div class="cell" data-code-copy="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">best.flux</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  flux.result,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"SE"</span>, <span class="st">"g.factor"</span>, <span class="st">"kappa"</span>, <span class="st">"MDF"</span>, <span class="st">"nb.obs"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"intercept"</span>, <span class="st">"p-value"</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">intercept.lim =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">g.limit =</span> <span class="dv">2</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.val =</span> <span class="fl">0.05</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.ratio =</span> <span class="dv">1</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">best.flux</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  flux.result,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"AICc"</span>, <span class="st">"SE"</span>, <span class="st">"g.factor"</span>, <span class="st">"kappa"</span>, <span class="st">"MDF"</span>, <span class="st">"nb.obs"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"intercept"</span>, <span class="st">"p-value"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">intercept.lim =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">g.limit =</span> <span class="dv">2</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.val =</span> <span class="fl">0.05</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.ratio =</span> <span class="dv">1</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="arguments" class="level3">
-<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<section id="arguments-1" class="level3">
+<h3 class="anchored" data-anchor-id="arguments-1">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 28%">
@@ -507,8 +601,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="details" class="level3">
-<h3 class="anchored" data-anchor-id="details">Details</h3>
+<section id="details-1" class="level3">
+<h3 class="anchored" data-anchor-id="details-1">Details</h3>
 <p>In <code>criteria</code>, the indices of model fit “MAE”, “RMSE” and “SE” all have a threshold. For MAE and RMSE, the threshold is instrument precision (1σ). For SE, the threshold is the instrument accuracy (1σ/n​). These indices also compare the two models (linear, LM, and non-linear, HM). The selection of the best model based on indices of model fit (“MAE”, “RMSE”, “AICc” and “SE”) is based on a scoring system. Both models start with a score of 0. For each criteria, whichever model performs worst is given +1. After all selected criteria have been evaluated, the model with the lowest score wins. In case of a tie, the non-linear flux estimate is always chosen by default, as non-linearity is assumed. The score is printed in the output data frame in the columns <code>HM.score</code> and <code>LM.score</code>.</p>
 <p>The <code>g.limit</code> indicates a threshold for the <code>g.factor</code>, which is the ratio between a non-linear flux estimate and a linear flux estimate. With the <code>best.flux</code> function, one can choose a limit at which the HM model is deemed to overestimate f<sub>0</sub>. Recommended thresholds for the g.factor are &lt;4 for a flexible threshold, &lt;2 for a medium threshold, or &lt;1.25 for a more conservative threshold. The default threshold is <code>g.limit = 2</code>. If the g.factor is above the specified threshold, the best flux estimate will switch to LM instead of HM and give a warning in the columns <code>quality.check</code> and <code>HM.diagnose</code>.</p>
 <p>The minimal detectable flux (<code>MDF</code>) is calculated from the instrument precision, the measurement time and the <code>flux.term</code>. Below the MDF, the flux estimate is considered under the detection limit, but not null. Therefore, the function will not return a 0. There will simply be a warning in the columns <code>quality.check</code>, <code>LM.diagnose</code> or <code>HM.diagnose</code> to warn of a flux estimate under the detection limit. No best flux estimate is chosen based on MDF.</p>
@@ -521,12 +615,12 @@ Note
 <h3 class="anchored" data-anchor-id="value">Value</h3>
 <p>The function returns a data.frame identical to the input <code>flux.result</code> (output from the function <code>goFlux</code>) with the additional columns <code>HM.diagnose</code>, <code>LM.diagnose</code>, <code>best.flux</code>, <code>model</code> and <code>quality.check</code>. For each criteria selected, an additional column is also added to specify the limits used for those criteria (e.g.&nbsp;<code>RMSE.lim</code>, <code>p.val.lim</code>, etc.)</p>
 </section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example</h3>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CO2_best <span class="ot">&lt;-</span> <span class="fu">best.flux</span>(CO2_flux, <span class="at">criteria =</span> <span class="fu">c</span>(<span class="st">"MAE"</span>, <span class="st">"AICc"</span>, <span class="st">"g.factor"</span>, <span class="st">"MDF"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -534,10 +628,10 @@ Note
 <h2 class="anchored" data-anchor-id="sec-save">Save results</h2>
 <p>RData results can be saved as RData, or any data frame can be saved as an Excel sheet following this procedure:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save RData</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.RData"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to Excel</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save RData</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.RData"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to Excel</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(CO2_best, <span class="at">file =</span> <span class="st">"CO2_result.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
