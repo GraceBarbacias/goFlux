@@ -283,13 +283,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#water-vapor-correction" id="toc-water-vapor-correction" class="nav-link active" data-scroll-target="#water-vapor-correction">Water vapor correction</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage"><strong>Usage</strong></a>
+  <li><a href="#goflux-for-goflux-a-user-friendly-ghg-fluxes-calculation-tool" id="toc-goflux-for-goflux-a-user-friendly-ghg-fluxes-calculation-tool" class="nav-link active" data-scroll-target="#goflux-for-goflux-a-user-friendly-ghg-fluxes-calculation-tool"><code>goFlux</code> for goFlux: a user-friendly GHG fluxes calculation tool</a>
   <ul>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
   <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
   <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
-  <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#water-vapor-correction" id="toc-water-vapor-correction" class="nav-link" data-scroll-target="#water-vapor-correction">Water vapor correction</a></li>
+  <li><a href="#usage-1" id="toc-usage-1" class="nav-link" data-scroll-target="#usage-1"><strong>Usage</strong></a>
+  <ul>
+  <li><a href="#arguments-1" id="toc-arguments-1" class="nav-link" data-scroll-target="#arguments-1">Arguments</a></li>
+  <li><a href="#details-1" id="toc-details-1" class="nav-link" data-scroll-target="#details-1">Details</a></li>
+  <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -339,6 +346,129 @@ window.Quarto = {
 <p>The good news is, we did the research for you! Find the internal volume of each instrument compatible with the goFlux R package in this Excel spreadsheet: <a href="quarto/docs/example_auxfile.xlsx">Download</a></p>
 </div>
 </div>
+<section id="goflux-for-goflux-a-user-friendly-ghg-fluxes-calculation-tool" class="level3">
+<h3 class="anchored" data-anchor-id="goflux-for-goflux-a-user-friendly-ghg-fluxes-calculation-tool"><code>goFlux</code> for goFlux: a user-friendly GHG fluxes calculation tool</h3>
+<p>goFlux: a user-friendly GHG fluxes calculation tool</p>
+<section id="usage" class="level4">
+<h4 class="anchored" data-anchor-id="usage">Usage</h4>
+<div class="cell" data-code-copy="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">goFlux</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">H2O_col =</span> <span class="st">"H2O_ppm"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">prec =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Area =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vtot =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.mult =</span> <span class="dv">1</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.min =</span> <span class="dv">0</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arguments" class="level4">
+<h4 class="anchored" data-anchor-id="arguments">Arguments</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>dataframe</code></td>
+<td style="text-align: left;">a data.frame containing gas measurements (see gastype below), water vapor measurements (see H2O_col below) and the following columns: UniqueID , Etime , Vtot , Area , Pcham , Tc…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>gastype</code></td>
+<td style="text-align: left;">character string; specifies which column should be used for the flux calculations. Must be one of the following: “CO2dry_ppm”, “CH4dry_ppb”, “COdry_ppb”, “N2Odry_ppb”, “NH3dry_p…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>H2O_col</code></td>
+<td style="text-align: left;">character string; specifies which column should be used to subtract the effect of water vapor in the chamber space. Default is H2O_col = “H2O_ppm” . If water vapor was not measu…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>prec</code></td>
+<td style="text-align: left;">numerical value; precision of the instruments. Units must be the same as gastype . With the default prec = NULL , instrument precision for each gas must be provided in dataframe .</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Area</code></td>
+<td style="text-align: left;">numerical value; area of the soil surface inside the chamber html (cm<sup>2</sup>) (cm^2) ASCII . Alternatively, provide the column Area in dataframe if Area is different betwee…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>offset</code></td>
+<td style="text-align: left;">(optional) numerical value; height between the soil surface and the chamber (cm). Alternatively, provide the column offset in dataframe if offset is different between samples. o…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Vtot</code></td>
+<td style="text-align: left;">numerical value; total volume inside the chamber, tubes, instruments, etc. (L). Alternatively, provide the column Vtot in dataframe if Vtot is different between samples. If Vtot…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Vcham</code></td>
+<td style="text-align: left;">(optional) numerical value; volume inside the chamber, tubes and instruments (L). Alternatively, provide the column Vcham in dataframe if Vcham is different between samples. Vch…</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Pcham</code></td>
+<td style="text-align: left;">numerical value; pressure inside the chamber (kPa). Alternatively, provide the column Pcham in dataframe if Pcham is different between samples. If Pcham is not provided, normal …</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Tcham</code></td>
+<td style="text-align: left;">numerical value; temperature inside the chamber (°C). Alternatively, provide the column Tcham in dataframe if Tcham is different between samples. If Tcham is not provided, 15°C …</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>k.mult</code></td>
+<td style="text-align: left;">numerical value; a multiplier for the allowed kappa-max. Default setting is no multiplier ( k.mult = 1 ). k.mult must be &gt; 0 and =&lt; 10.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>warn.length</code></td>
+<td style="text-align: left;">numerical value; limit under which a measurement is flagged for being too short ( nb.obs &lt; warn.length ).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>k.min</code></td>
+<td style="text-align: left;">numerical value; a lower boundary value for kappa in the HM model. Default is k.min = 0</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="details" class="level4">
+<h4 class="anchored" data-anchor-id="details">Details</h4>
+<p>Flux estimate units are , ), , ))) (if initial concentration is ppm, e.g.&nbsp;CO2dry_ppm) and , ), , ))) (if initial concentration is ppb, e.g.&nbsp;CH4dry_ppb). The ) function calculates flux estimates from the linear model (LM) and the Hutchinson and Mosier model (HM). The HM model is a non-linear model, whose curvature is controlled by the parameter kappa. A large kappa returns a strong curvature. A maximum threshold for this parameter, kappa-max ( ) ), can be calculated from the linear flux estimate ( ) ), the minimal detectable flux ( ) ) and the time of chamber closure. This limit of kappa-max is included in the ) function, so that the non-linear flux estimate cannot exceed this maximum curvature. Inversely, one can set a minimal threshold for kappa: to allow for a log-like curvature, set below 0 (ex. -1). Flux estimates and the ) are calculated from (in seconds). Make sure that chamber closure is indicated by and the first instance of per UniqueID. All flux estimates, including the ) , are obtained from the multiplication of the slope and the ) , which is used to correct for the dilution effect of water vapor and convert the flux units to obtain a term in nmol or , ), , ))) . The argument is in , “)),”), ))) , but the output units from ) are in , “)),”), ))) . This means that there is a factor of 10,000 to convert from , ), , ))) to , ), , ))) . This is important to take into account if one would provide something else than an in , “)),”), ))) to the function. For example, with incubated soil samples, one may provide an amount of soil (kg) instead of an area in the column . To get the right units in that case, multiply the kilograms of soil by 10,000 to remove the conversion from , ), , ))) to , ), , ))) . In , the gas species listed are the ones for which this package has been adapted. Please write to the maintainer of this package for adaptation of additional gases. is the limit below which the chamber closure time is flagged for being too short ( ). Portable greenhouse gas analyzers typically measure at a frequency of 1 Hz. Therefore, for the default setting of , the chamber closure time should be approximately one minute (60 seconds). If the number of observations is smaller than the threshold, a warning is printed: e.g.&nbsp;“Low number of observations: UniqueID X has 59 observations”.</p>
+</section>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>CH4_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CH4dry_ppb"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>H2O_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"H2O_ppm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
 <section id="water-vapor-correction" class="level3">
 <h3 class="anchored" data-anchor-id="water-vapor-correction">Water vapor correction</h3>
 <p>The “flux term” is a conversion factor used to convert the flux units. Furthermore, the <code>flux.term</code> contains a correction term to account for water vapor inside the chamber: <span class="math inline">\((1 - H_2O)\)</span>. This correction term is often overlooked, but is essential when estimating fluxes using dry mole fractions of gases, as described below.</p>
@@ -357,8 +487,8 @@ window.Quarto = {
 \tag{6}\]</span></span></p>
 <p>For a more detailed demonstration of how these equations were obtained, refer to the LI-COR support documentations of the LI-8100A instrument (<a href="https://www.licor.com/support/LI-8100A/topics/deriving-the-flux-equation.html#fc">Support &gt; LI-8100A &gt; Operating Instructions &gt; Deriving the Flux Equation: The Model</a>).</p>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage"><strong>Usage</strong></h2>
+<section id="usage-1" class="level2">
+<h2 class="anchored" data-anchor-id="usage-1"><strong>Usage</strong></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -373,24 +503,24 @@ Note
 </div>
 </div>
 <div class="cell" data-code-copy="false">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">goFlux</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">H2O_col =</span> <span class="st">"H2O_ppm"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prec =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Area =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vtot =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vcham =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pcham =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tcham =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.mult =</span> <span class="dv">1</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.min =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">goFlux</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dataframe,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  gastype,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">H2O_col =</span> <span class="st">"H2O_ppm"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prec =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Area =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vtot =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Vcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tcham =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.mult =</span> <span class="dv">1</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">warn.length =</span> <span class="dv">60</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">k.min =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="arguments" class="level3">
-<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<section id="arguments-1" class="level3">
+<h3 class="anchored" data-anchor-id="arguments-1">Arguments</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -452,8 +582,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="details" class="level3">
-<h3 class="anchored" data-anchor-id="details">Details</h3>
+<section id="details-1" class="level3">
+<h3 class="anchored" data-anchor-id="details-1">Details</h3>
 <p>Flux estimate units are µmol m<sup>-2</sup>s<sup>-1</sup> (if initial concentration is ppm, e.g.&nbsp;CO2dry_ppm) and nmol m<sup>-2</sup>s<sup>-1</sup> (if initial concentration is ppb, e.g.&nbsp;CH4dry_ppb).</p>
 <p>The <code>goFlux</code> function calculates flux estimates from the linear model (LM) and the Hutchinson and Mosier model (HM). The HM model is a non-linear model, whose curvature is controlled by the parameter kappa. A large kappa returns a strong curvature. A maximum threshold for this parameter, kappa-max (<code>k.max</code>), can be calculated from the linear flux estimate (<code>LM.flux</code>), the minimal detectable flux (<code>MDF</code>) and the time of chamber closure. This limit of kappa-max is included in the <code>goFlux</code> function, so that the non-linear flux estimate cannot exceed this maximum curvature. Inversely, one can set a minimal threshold for kappa: to allow for a log-like curvature, set <code>k.min</code> below 0 (ex. -1), otherwise it should be just above 0 (ex. 10^-8). <code>k.min</code> cannot be 0 as this would result in a singular gradient.</p>
 <p>All flux estimates, including the <code>MDF</code>, are multiplied by a <code>flux.term</code> which is used to correct for water vapor inside the chamber, as well as convert the units to obtain a term in nmol or µmol m<sup>-2</sup>s<sup>-1</sup>.</p>
@@ -465,12 +595,12 @@ Note
 <h3 class="anchored" data-anchor-id="value">Value</h3>
 <p>The function returns a data frame with 28 columns: a <code>UniqueID</code> per measurement, 11 columns for the linear model results (linear flux estimate (<code>LM.flux</code>), initial gas concentration (<code>LM.C0</code>), final gas concentration (<code>LM.Ct</code>), slope of linear regression (<code>LM.slope</code>), mean absolute error (<code>LM.MAE</code>), root mean square error (<code>LM.RMSE</code>), Akaike’s information criterion corrected for small sample size (<code>LM.AICc</code>), standard error (<code>LM.SE</code>), relative standard error (<code>LM.se.rel</code>), coefficient of determination (<code>LM.r2</code>), and <em>p-value</em> (<code>LM.p.val</code>)), 11 columns for the non-linear model results (non-linear flux estimate (<code>HM.flux</code>), initial gas concentration (<code>HM.C0</code>), the assumed concentration of constant gas source below the surface (<code>HM.Ci</code>), slope at <code>t=0</code> (<code>HM.slope</code>), mean absolute error (<code>HM.MAE</code>), root mean square error (<code>HM.RMSE</code>), Akaike’s information criterion corrected for small sample size (<code>HM.AICc</code>), standard error (<code>HM.SE</code>), relative standard error (<code>HM.se.rel</code>), coefficient of determination (<code>HM.r2</code>), and curvature (kappa; <code>HM.k</code>), as well as the minimal detectable flux (<code>MDF</code>), the precision of the instrument (<code>prec</code>), the flux term (<code>flux.term</code>), kappa-max (<code>k.max</code>), the g factor (g.fact; <code>g.factor</code>), the number of observations used (<code>nb.obs</code>) and the true initial gas concentration (<code>C0</code>) and final gas concentration (<code>Ct</code>).</p>
 </section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example</h3>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CH4_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CH4dry_ppb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(manID.UGGA)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CO2dry_ppm"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>CH4_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(manID.UGGA, <span class="st">"CH4dry_ppb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -485,10 +615,10 @@ Note
 <p>To load multiple RData files at once in your environment and store them all in one object, use the function <code>map_df</code> from the package <code>purrr</code>.</p>
 <p>Use the argument <code>pattern</code> to load only the files that match a pattern.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my.files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"RData"</span>, <span class="at">pattern =</span> <span class="st">"imp.RData"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span> <span class="fu">get</span>(<span class="fu">load</span>(.x)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(my.files, <span class="st">"CO2dry_ppm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my.files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"RData"</span>, <span class="at">pattern =</span> <span class="st">"imp.RData"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(<span class="sc">~</span> <span class="fu">get</span>(<span class="fu">load</span>(.x)))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>CO2_flux <span class="ot">&lt;-</span> <span class="fu">goFlux</span>(my.files, <span class="st">"CO2dry_ppm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
